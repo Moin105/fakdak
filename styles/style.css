@@ -175,7 +175,7 @@ main {
   color: #666;
 }
 #intro:hover p {
-  display: block; /* Show text on hover */
+  display: flex; /* Show text on hover */
 }
 #links {
   text-align: center; /* Center content horizontally */
@@ -220,4 +220,13 @@ main {
 }
 .red{
   background-color: red;
+}
+#copyImage{
+  width: 14px;
+    border-radius: 0% !important;
+    margin: 8px !important;
+}
+.centerwe{;
+    justify-content: center;
+    align-items: center;
 }

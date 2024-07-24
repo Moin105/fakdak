@@ -13,16 +13,12 @@ const baseContent = [   // Add more tags as needed
   "FAK YOR TA", "FAK YOR MARKET CYCLE", "FAK YOR TICKER"]}, {tags:["FAK YOR ALPHA", "FAK YOR BAGS",
   "FAK YOR PORTFOLIO", "FAK YOR META", "FAK YOR PRESIDENT", "FAK YOR GOVERNMENT TOO!"]}
 ];
-
-// Function to generate unique content for each row
 function generateUniqueContent(rowIndex) {
-    // Create a new set of content by cycling through the base content array
     const contentIndex = rowIndex % baseContent.length;
     return baseContent[contentIndex].tags;
   }
   
 
-// Function to create a marquee row
 function createMarqueeRow(isReverse, rowIndex) {
   const marqueeRow = document.createElement('div');
   marqueeRow.className = 'marquee';
@@ -36,21 +32,35 @@ function createMarqueeRow(isReverse, rowIndex) {
     tag.className = 'tag';
     tag.textContent = content;
     if (index === randomIndex) {
-        tag.classList.add('red'); // Add a class for styling
+        tag.classList.add('red'); 
       }
     marqueeRow.appendChild(tag);
   });
 
-  // Duplicate the content to ensure seamless scrolling
   const clone = marqueeRow.cloneNode(true);
   marqueeRow.appendChild(clone);
 
   return marqueeRow;
 }
 
-// Append marquee rows to the container
 for (let i = 0; i < numRows; i++) {
   const isReverse = i % 2 !== 0;
   const marqueeRow = createMarqueeRow(isReverse, i);
   marqueeContainer.appendChild(marqueeRow);
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const copyImage = document.getElementById('copyImage');
+    const contentToCopy = '7fd79892567b12b8a4fe3befc41786322d40a9680a0509b158e8e1b9'; 
+  
+    copyImage.addEventListener('click', function() {
+      const tempTextArea = document.createElement('textarea');
+      tempTextArea.value = contentToCopy;
+      document.body.appendChild(tempTextArea);
+  
+      tempTextArea.select();
+      document.execCommand('copy');
+  
+      document.body.removeChild(tempTextArea);
+  
+    });
+  });
