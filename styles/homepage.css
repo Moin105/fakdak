@@ -1,0 +1,251 @@
+/* Marquee styles */
+.marquee {
+    --gap: 1rem;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+   border: none !important;
+    gap: var(--gap);
+  }
+  
+  .marquee__content {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: var(--gap);
+    min-width: 100%;
+  }
+  
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  
+  /* Pause animation when reduced-motion is set */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__content {
+      animation-play-state: paused !important;
+    }
+  }
+  
+  /* Enable animation */
+  .enable-animation .marquee__content {
+    animation: scroll 20s linear infinite;
+    padding:0;
+    margin:0;
+  }
+  
+  /* Reverse animation */
+  .marquee--reverse .marquee__content {
+    animation-direction: reverse;
+  }
+  
+  
+  /* Attempt to size parent based on content. Keep in mind that the parent width is equal to both content containers that stretch to fill the parent. */
+  .marquee--fit-content {
+    max-width: fit-content;
+  }
+  
+  /* A fit-content sizing fix: Absolute position the duplicate container. This will set the size of the parent wrapper to a single child container. Shout out to Olavi's article that had this solution 👏 @link: https://olavihaapala.fi/2021/02/23/modern-marquee.html  */
+  .marquee--pos-absolute .marquee__content:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Enable position absolute animation on the duplicate content (last-child) */
+  .enable-animation .marquee--pos-absolute .marquee__content:last-child {
+    animation-name: scroll-abs;
+  }
+  
+  @keyframes scroll-abs {
+    from {
+      transform: translateX(calc(100% + var(--gap)));
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Other page demo styles */
+  .marquee__content > * {
+    flex: 0 0 auto;
+    color: black;
+    background: yellow;
+    margin: 2px;
+    padding: 10px 20px;
+    font-weight: 500;
+    border-radius: 0.25rem;
+    text-align: center;
+  }
+  
+  .marquee {
+    border: 2px dashed lightgray;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding: 0rem;
+    width: 100%;
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    overflow:hidden;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-block: 2rem 1rem;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  section {
+    margin-block: 0rem;
+  }
+  
+  section > * + * {
+    margin-block-start: 0.5rem;
+  }
+  ul {
+    list-style-type: none;
+  }
+
+  main {
+    max-width: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.942);
+    margin: 20px auto;
+    border-radius: 10px;
+  }
+  #intro {
+    margin-bottom: 20px;
+  }
+  #intro img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px; /* Center image horizontally and add space below */
+    border-radius: 50%; /* Rounded border for image */
+    transition: transform 0.3s ease-in-out; /* Smooth transform on hover */
+  }
+  #intro img:hover {
+    transform: scale(1.069); /* Scale up image on hover */
+  }
+  #intro p {
+    display: none; /* Hide text initially */
+    font-size: 14px;
+    color: #666;
+  }
+  #intro:hover p {
+    display: flex; /* Show text on hover */
+  }
+  #links {
+    text-align: center; /* Center content horizontally */
+  }
+  #links a {
+    display: inline-block;
+    margin: 0 10px; /* Adjust margin as needed */
+    text-decoration: none;
+  }
+  #links a img {
+    max-width: 24px; /* Adjust as needed */
+    height: auto;
+    vertical-align: middle; /* Align images vertically */
+  }
+  #links a:hover {
+    text-decoration: underline;
+  }
+  .second-section {
+    height: 100vh;
+    display: block;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 0px 0px 40px 0px;
+  }
+  .sectionser {
+    display: block;
+    margin: 20px auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255, 0.9);
+    border-radius: 16px;
+  }
+  .section-one {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+      width: 100%;
+      top: 0;
+  }
+  .red{
+    background-color: red;
+  }
+  #copyImage{
+    width: 14px;
+      border-radius: 0% !important;
+      margin: 8px !important;
+  }
+  .centerwe{;
+      justify-content: center;
+      align-items: center;
+  }
+  .red{
+    background-color: red;
+  }
+  header{
+    position: fixed;
+    top:0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px 20px;
+    width: 100%;
+    z-index: 1000;
+  }
+  header img {
+    width:55px;
+    height:55px;
+    margin: 0px;
+    cursor: pointer;
+    border-radius: 9px;
+  }
+  header a {
+    text-decoration: none;
+  }
+  header a button {
+    background-color: black;
+    color: white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 9px;
+  }
+  header button img {
+    border-radius: 50%;
+    width: 20px;
+    margin: 0px;
+    cursor: pointer;
+    height: 20px;
+  }

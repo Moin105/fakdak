@@ -1,0 +1,53 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakDak Meme Explorer</title>
+    <link rel="stylesheet" href="./styles/homepage.css" />
+
+</head>
+<body>
+    <header>
+        <img src="./images/fakdak.jpeg" alt="FAKDAK" />
+        <button>   <img src="./images/fakdak.jpeg" alt="Intro Image" /> Explore Memes</button>
+      </header> 
+      <script src="script.js"></script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery and Random Image</title>
+  <link rel="stylesheet" href="./styles/meme.css" />
+</head>
+<div id="content"></div>
+
+<body>
+  <div class="wrapeir">  
+  <div class="tabs">
+    <button class="tab-button" onclick="openTab('galleryTab')">Gallery</button>
+    <button class="tab-button" onclick="openTab('randomTab')">Random Image</button>
+  </div>
+
+  <div id="galleryTab" class="tab-content">
+    <h2>Image Gallery</h2>
+    <div id="gallery"></div>
+  </div>
+
+  <div id="randomTab" class="tab-content" style="display:none;">
+    <h2>Random Image</h2>
+    <div id="randomImageContainer">
+      <img id="randomImage" src="" alt="Random Image">
+    </div>
+    <button onclick="getRandomImage()">Get Random Image</button>
+    <button onclick="copyImage()">Copy Image</button>
+    <button onclick="downloadImage()">Download Image</button>
+  </div>
+</div>
+  <script src="meme.js"></script>
+</body>
+</html>

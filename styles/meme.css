@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background:url('../images/fakdaskbanner.png');
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    height:100vh;
+  }
+  .wrapeir{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.9);
+    
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: white;
+    margin: 0 5px;
+  }
+  
+  button:hover {
+    background-color: #343434;
+  }
+  
+  .tab-content {
+    display: none;
+    padding: 12px 15px 30px 15px;
+
+    text-align: center;
+  }
+  
+  #gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+  
+  #gallery img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #000;
+    margin: 10px;
+    object-fit: cover;
+  }
+  #gallery img:hover {
+    width: 160px;
+    height: 160px;
+    margin: 10px;
+    object-fit: cover;
+  }
+  #randomImage{
+    min-width: 200px;
+    max-width: 500px;
+    width: 100%;
+
+    border-radius: 0% !important;
+    margin: 8px auto !important;
+  }
+    #gallery {
+    overflow: auto; /* Ensure scrolling works */
+    scrollbar-width: none; /* Firefox */
+
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+  
+  #gallery::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  /* button{
+    background:black;
+    color:white;
+    padding:10px 20px;
+  } */
