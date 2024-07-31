@@ -142,14 +142,13 @@ const images = [
 
   // Add more image file names
 ];
-
 document.addEventListener("DOMContentLoaded", () => {
   loadGallery();
   getRandomImage();
   openTab('galleryTab'); 
 });
 
-
+let selectedFromGallery = false;
 
 function loadGallery() {
   const gallery = document.getElementById("gallery");
@@ -157,6 +156,10 @@ function loadGallery() {
     const imgElement = document.createElement("img");
     imgElement.src = imageFolderPath + image;
     imgElement.alt = image;
+    imgElement.addEventListener("click", () => {
+      showSelectedImage(image);
+      openTab('randomTab', false); // Open random image tab without generating a new random image
+    });
     gallery.appendChild(imgElement);
   });
 }
@@ -167,6 +170,14 @@ function getRandomImage() {
   const randomImageElement = document.getElementById("randomImage");
   randomImageElement.src = imageFolderPath + randomImage;
   randomImageElement.alt = randomImage;
+  selectedFromGallery = false; // Reset the flag when generating a random image
+}
+
+function showSelectedImage(image) {
+  selectedFromGallery = true;
+  const randomImageElement = document.getElementById("randomImage");
+  randomImageElement.src = imageFolderPath + image;
+  randomImageElement.alt = image;
 }
 
 function copyImage() {
@@ -192,9 +203,18 @@ function downloadImage() {
   a.click();
   document.body.removeChild(a);
 }
-function openTab(tabId) {
+
+function openTab(tabId, generateRandom = true) {
   const tabs = document.querySelectorAll(".tab-content");
   tabs.forEach((tab) => (tab.style.display = "none"));
-  getRandomImage()
-  document.getElementById(tabId).style.display = "block";
+  
+  const targetTab = document.getElementById(tabId);
+  if (targetTab) {
+    if (tabId === 'randomTab' && generateRandom && !selectedFromGallery) {
+      getRandomImage();
+    }
+    targetTab.style.display = "block";
+  } else {
+    console.error(`Tab with id ${tabId} does not exist.`);
+  }
 }
