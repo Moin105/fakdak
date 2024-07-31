@@ -149,12 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
   openTab('galleryTab'); 
 });
 
-function openTab(tabId) {
-  const tabs = document.querySelectorAll(".tab-content");
-  tabs.forEach((tab) => (tab.style.display = "none"));
 
-  document.getElementById(tabId).style.display = "block";
-}
 
 function loadGallery() {
   const gallery = document.getElementById("gallery");
@@ -196,4 +191,10 @@ function downloadImage() {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+}
+function openTab(tabId) {
+  const tabs = document.querySelectorAll(".tab-content");
+  tabs.forEach((tab) => (tab.style.display = "none"));
+  getRandomImage()
+  document.getElementById(tabId).style.display = "block";
 }
