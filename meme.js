@@ -143,6 +143,7 @@ const images = [
   // Add more image file names
 ];
 document.addEventListener("DOMContentLoaded", () => {
+  selectedFromGallery = false; // Ensure initial state
   loadGallery();
   getRandomImage();
   openTab('galleryTab'); 
@@ -211,7 +212,7 @@ function openTab(tabId, generateRandom = true) {
   const targetTab = document.getElementById(tabId);
   if (targetTab) {
     if (tabId === 'randomTab' && generateRandom && !selectedFromGallery) {
-      getRandomImage();
+      // getRandomImage();
     }
     targetTab.style.display = "block";
   } else {
